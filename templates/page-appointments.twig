@@ -1,0 +1,45 @@
+{% extends "base.twig" %}
+
+{% block content %}
+	<ul class="appointments">
+		{% for year_key, year in days %}
+			<li class="year">
+				<h3>{{ year_key }}</h3>
+				<ul class="month__list">
+					{% for month_key, month in year %}
+						<li class="month">
+							<h4>{{ month_key }}</h4>
+							<ul class="day__list">
+								{% for day_key, day in month %}
+									{% if day.day_name != 'Sonntag' and day.day_name != 'Samstag' %}
+										<li class="day">
+											<div class="date">
+												<p class="name">{{ day.day_name | substr(0, 2) }}</p>
+												<p class="date">{{ day.day }}.{{day.month}}.</p>
+											</div>
+											<ul class="time">
+												<li class="11-00">11:00</li>
+												<li class="11-30">11:30</li>
+												<li class="12-00">12:00</li>
+												<li class="12-30">12:30</li>
+												<li class="13-00">13:00</li>
+												<li class="13-30">13:30</li>
+												<li class="14-00">14:00</li>
+												<li class="14-30">14:30</li>
+											</ul>
+										</li>
+									{% endif %}
+								{% endfor %}
+							</ul>
+						</li>
+					{% endfor %}
+				</ul>
+			</li>
+		{% endfor %}
+	</ul>
+	{% for post in posts %}
+		{% include ['tease-'~post.post_type~'.twig', 'tease.twig'] %}
+	{% endfor %}
+
+	{{ post.content }}
+{% endblock %}

@@ -1,0 +1,4 @@
+<h1>{{ post.datetime|date('d/m/Y h:m') }}</h1>
+{% if is_admin %}
+  {{ post.email }}
+{% endif %}
