@@ -1,8 +1,8 @@
 
 body {
-	background-color: #3c3c3c;
-	background-color: rgb(60, 60, 60);
-	color: #fff;
+	background-color: @body_background_color;
+	color: @text_color;
+	line-height: 1.3;
 
 	font-family:
 		-apple-system,
@@ -17,47 +17,73 @@ body {
 }
 
 header.main {
-	background-color: #191919;
-	background-color: rgb(25, 25, 25);
+	background-color: @header_background_color;
 	border-bottom-width: 5px;
 	border-bottom-style: solid;
-	border-bottom-color: #ed1c24;
-	border-bottom-color: rgb(237, 28, 36);
-}
+	border-bottom-color: @header_border_color;
 
-nav ul li {
   a {
-    color: #fff;
+    color: @header_link_color;
 
     &:hover {
-      color: #ddd;
+      color: @header_link_color_hover;
     }
   }
 }
 
+footer.main {
+	background-color: @footer_background_color;
+	border-top-width: 0.5vh;
+	border-top-style: solid;
+	border-top-color: @footer_border_color;
+	color: @footer_text_color;
+
+	a {
+		color: @footer_link_color;
+
+		&:hover {
+			color: @footer_link_color_hover;
+		}
+	}
+}
+
 .appointments {
-	.year, .month {
+	.year,
+	.month {
 		clear: both;
 	}
 
 	.day {
-		height: 3em;
 		margin: 0.5em;
-		transition: height 500ms, width 500ms;
 		padding: 0.5em;
 		float: left;
 		border: 1px solid;
 		position: relative;
 
+		&.id-1 {
+			clear: both;
+		}
+
 		.time {
-			display: none;
+			opacity: 0;
+			height: 0;
+			transition: opacity 500ms, height 500ms;
+			overflow: hidden;
+		}
+
+		.appointment {
+			span {
+				color: @subtle_color;
+			}
 		}
 
 		&:hover {
 			.time {
-				background-color: #3c3c3c;
+				height: auto;
+				opacity: 1;
+				background-color: @header_background_color;
 				display: inline-block;
-				border: 1px solid;
+				border: 1px solid @text_color;
 				z-index: 100;
 				position: absolute;
 				left: 0;
