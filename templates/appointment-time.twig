@@ -1,0 +1,7 @@
+<li class="appointment {{ time }}">
+  {% if day.appointments[time] %}
+  <span>{{ time }}</span>
+  {% else %}
+  <a href="/appointments?ayear={{ day.year }}&amonth={{ day.month }}&aday={{ day.day }}&atime={{ time }}">{{ time }}</a>
+  {% endif %}
+</li>
