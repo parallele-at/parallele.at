@@ -15,11 +15,10 @@ $args = array(
   ),
 );
 
-$context['posts'] = Timber::get_posts( $args );
+$posts = Timber::get_posts( $args );
 
 $today = date('Y-m-d');
 $start_time = strtotime($today);
-
 $end_time = strtotime("+1 months", $start_time);
 
 $daynames = [
@@ -60,8 +59,12 @@ for($i = $start_time; $i < $end_time; $i += 86400) {
   $day = date('d', $i);
   $month = date('m', $i);
   $year = date('Y', $i);
-  $month_name =  $monthnames[date('n', $i)];
-  $day_name = $daynames[date('w', $i)];
+
+  $week_index = date('w', $i);
+  $month_index = date('n', $i);
+
+  $month_name =  $monthnames[$month_index];
+  $day_name = $daynames[$week_index];
 
   if ($current_year != $year) {
     $years[$year] = [];
@@ -69,8 +72,8 @@ for($i = $start_time; $i < $end_time; $i += 86400) {
   }
 
   if ($current_month != $month) {
-    $current_month = $month;
     $years[$year][$month_name] = [];
+    $current_month = $month;
   }
 
   $curr_day = [];
@@ -78,6 +81,18 @@ for($i = $start_time; $i < $end_time; $i += 86400) {
   $curr_day['day_name'] = $day_name;
   $curr_day['day'] = $day;
   $curr_day['month'] = $month;
+  $curr_day['year'] = $year;
+  $curr_day['id'] = $week_index;
+
+  foreach ($posts as $post) {
+    $post_day = date('d', $post->datetime);
+    $post_month = date('m', $post->datetime);
+    if ($post_day == $day && $post_month == $month) {
+      $time = date('H:i', $post->datetime);
+      $curr_day['appointments'] = isset($curr_day['appointments']) ? $curr_day['appointments'] : [];
+      $curr_day['appointments'][$time] = $post;
+    }
+  }
 
   $years[$year][$month_name][] = $curr_day;
 }
@@ -85,4 +100,3 @@ for($i = $start_time; $i < $end_time; $i += 86400) {
 $context['days'] = $years;
 
 Timber::render( 'page-appointments.twig', $context );
-?>
