@@ -1,15 +1,16 @@
 <?php
 function avatami_enqueue_styles() {
-  $parent_style = 'parent-style'; // This is 'twentyfifteen-style' for the Twenty Fifteen theme.
+  $parent_style = 'magic-grundstein'; 
 
-  wp_enqueue_style( $parent_style, get_template_directory_uri() . '/style.less', -1 );
+  wp_enqueue_style( $parent_style, get_template_directory_uri() . '/style.less' );
   wp_enqueue_style( 'child-style',
     get_stylesheet_directory_uri() . '/style.less',
     array( $parent_style ),
     wp_get_theme()->get('Version')
   );
 }
-add_action( 'wp_enqueue_scripts', 'avatami_enqueue_styles' );
+
+add_action( 'wp_enqueue_scripts', 'avatami_enqueue_styles', PHP_INT_MIN );
 
 // remove emoji scripts
 remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
