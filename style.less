@@ -53,7 +53,7 @@ header.main {
 		ul {
 			position: absolute;
 			li {
-				padding: 0 0 0.1em;
+				padding: 0 0 0.3em;
 
 				ul {
 					display: none;
@@ -66,7 +66,7 @@ header.main {
 						position: absolute;
 						border-top: 0 none;
 						border-right: 0 none;
-						margin: 0.1em 0 2px;
+						margin: 0.3em 0 2px;
 
 						li {
 							display: block;
@@ -102,7 +102,9 @@ h2 {
 		margin: 1em 0;
 	}
 	figure:first-child {
-		margin: 2.6em 0 0;
+		padding: 2.6em 0 0;
+		background-color: #000;
+		margin: 0;
 	}
 }
 
@@ -139,5 +141,19 @@ footer.main {
 
 	.wrapper figure:first-child {
 		margin: 0;
+	}
+
+	header.main nav.main {
+		ul {
+			li {
+				padding: 0 0 0.1em;
+			
+				&:hover {
+					ul {
+						margin: 0.1em 0 2px;
+					}
+				}
+			}
+		}
 	}
 }
