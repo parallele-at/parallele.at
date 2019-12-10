@@ -1,8 +1,5 @@
 <div class="copy">
   <span>Ⓐ - Parallele Polis - all rites reversed</span>
 </div>
-{% if footer_menu %}
-  <nav class="footer" role="navigation">
-    {% include 'menu.twig' with {'menu': footer_menu.get_items} %}
-  </nav>
-{% endif %}
+
+{{ magic_social_menu_widgets }}
