@@ -2,12 +2,19 @@ html {
 	scroll-behavior: smooth;
 }
 
+.tribe-events-schedule {
+	background: transparent !important;
+	border: 0 none !important;
+}
+
 body {
 	background-color: @body_background_color;
 	color: @text_color;
 	line-height: 1.3;
 
 	word-wrap: break-word;
+
+	font-weight: 200;
 }
 
 main#content {
@@ -41,16 +48,27 @@ header.main {
   }
 
 	.logo {
-		padding: 1px 0 0;
+		padding: .3em 0 0;
 
 		img {
 			max-height: 1.5em;
 		}
 	}
 
+
+	nav.main {
+		float: left;
+    margin: .5em 0 0;
+
+		.logo {
+			margin: 6px 0 0;
+		}
+	}
+
+
 	.cnss-social-icon {
 		float: right;
-    margin: 8px 0 12px;
+    margin: 0;
 	}
 }
 
@@ -101,6 +119,16 @@ h2 {
 		padding: 2.6em 0 0;
 		background-color: #000;
 		margin: 0;
+	}
+}
+
+nav.main {
+	ul {
+		font-weight: 400;
+
+		ul {
+			font-weight: 200;
+		}
 	}
 }
 
@@ -177,108 +205,19 @@ footer.main {
 	}
 
 	header.main nav.main {
-		font-weight: 700;
-
 		ul {
 			li {
 				padding: 0 0 0.1em;
 
 				ul {
-				  margin: 0.1em 0 2px;
+					font-weight: 200;
+				  margin: 3px 0 2px;
 				}
 			}
 		}
 	}
 }
 
-body #event-timeline-wrapper.all {
-	.ect-timeline-year {
-		background: @body_background_color;
-		height: 120px;
-		width: 120px;
-
-		.year-placeholder span.month-year-box {
-			font-size: 18px;
-			color: #fff;
-			font-weight: 400;
-			padding: 2em 0;
-			line-height: 1.2;
-			word-spacing: 200px;
-		}
-	}
-
-	.ect-timeline-post {
-		&.even, &.odd {
-			.timeline-dots {
-				background-color: #fff;
-			}
-			.timeline-meta {
-				background-color: @body_background_color;
-				background-image: none;
-				color: #fff;
-			}
-			.timeline-content {
-				background-color: @body_background_color;
-				border: 0 none;
-
-				&::before {
-					border-color: @body_background_color;
-				}
-
-				p, a {
-					color: @text_color;
-				}
-			}
-			.ect-date-area {
-				color: #fff;
-			}
-			.timeline-meta::before {
-				border: 0 none;
-			}
-		}
-	}
-
-	.ect-timeline-post h2.content-title {
-		padding: 1em;
-		margin: 0;
-		width: 100%;
-	}
-
-	.ect-timeline-post.even,
-	.ect-timeline-post.odd {
-
-		h2.content-title a.ect-event-url:hover {
-			color: #fff;
-
-			&:hover {
-				color: #fff;
-			}
-		}
-	}
-
-
-	.ect-timeline-post .ect-event-content p {
-		margin: .5em 0;
-	}
-
-
-	#event-timeline-wrapper::before {
-		background: #fff;
-	}
-
-	#event-timeline-wrapper::after {
-		background: #fff;
-	}
-	.ect-timeline-year {
-		box-shadow: #fff 0 0 0 4px,#fff 0 0 0 4px;
-	}
-}
-
-header.main {
-	nav.main {
-		float: left;
-	}
-}
 
 @media screen and (min-width: 999px) {
 	#burger {
@@ -403,65 +342,155 @@ header.main {
 		}
 	}
 }
-body #content .wrapper {
-	#event-timeline-wrapper .timeline-meta .timeline-view-venue {
-		span,
-		span a {
-			color: #fff;
+
+
+
+
+body {
+	#event-timeline-wrapper.all {
+		.ect-timeline-year {
+			background: @body_background_color;
+			height: 120px;
+			width: 120px;
+
+			.year-placeholder span.month-year-box {
+				font-size: 18px;
+				color: #fff;
+				font-weight: 400;
+				padding: 2em 0;
+				line-height: 1.2;
+				word-spacing: 200px;
+			}
+		}
+
+		.ect-timeline-post {
+			&.even, &.odd {
+				.timeline-dots {
+					background-color: #fff;
+				}
+				.timeline-meta {
+					background-color: @body_background_color;
+					background-image: none;
+					color: #fff;
+				}
+				.timeline-content {
+					background-color: @body_background_color;
+					border: 0 none;
+
+					&::before {
+						border-color: @body_background_color;
+					}
+
+					p, a {
+						color: @text_color;
+					}
+				}
+				.ect-date-area {
+					color: #fff;
+				}
+				.timeline-meta::before {
+					border: 0 none;
+				}
+			}
+		}
+
+		.ect-timeline-post h2.content-title {
+			padding: 1em;
+			margin: 0;
+			width: 100%;
+		}
+
+		.ect-timeline-post.even,
+		.ect-timeline-post.odd {
+
+			h2.content-title a.ect-event-url:hover {
+				color: #fff;
+
+				&:hover {
+					color: #fff;
+				}
+			}
+		}
+
+
+		.ect-timeline-post .ect-event-content p {
+			margin: .5em 0;
+		}
+
+
+		#event-timeline-wrapper::before {
+			background: #fff;
+		}
+
+		#event-timeline-wrapper::after {
+			background: #fff;
+		}
+		.ect-timeline-year {
+			box-shadow: #fff 0 0 0 4px,#fff 0 0 0 4px;
 		}
 	}
 
-	#tribe-events {
-		margin: 2.5em 0 0;
+	#content .wrapper {
 
-		.tribe-events-back {
-			width: 100%;
+		#event-timeline-wrapper .timeline-meta .timeline-view-venue {
+			span,
+			span a {
+				color: #fff;
+			}
 		}
 
-		h2.tribe-events-list-separator-month {
-			color: #000;
-			font-size: 1em;
-			padding: 0.5em;
-			width: 100%;
-		}
+		#tribe-events {
+			margin: 2.5em 0 0;
 
-		.tribe-events-single {
-			.tribe-events-schedule,
+			.tribe-events-back {
+				width: 100%;
+			}
+
+			h2.tribe-events-list-separator-month {
+				color: #000;
+				font-size: 1em;
+				padding: 0.5em;
+				width: 100%;
+			}
+
+			.tribe-events-single {
+				.tribe-events-schedule,
+				.tribe-events-single-event-title {
+					text-align: center;
+				}
+			}
+
+			.tribe-events-sub-nav {
+				width: 100%;
+			}
+
+			.tribe-events-content p {
+				width: 100%;
+			}
+
+			.tribe-events-event-meta {
+				color: @body_background_color;
+
+				a {
+					color: @body_background_color;
+				}
+			}
+
+			.tribe-events-event-image img {
+				width: 100%;
+			}
+
+			.tribe-events-notices {
+				ul {
+					margin: 0;
+
+					color: @body_background_color;
+				}
+			}
+
 			.tribe-events-single-event-title {
-				text-align: center;
+				color: #fff;
 			}
-		}
-
-		.tribe-events-sub-nav {
-			width: 100%;
-		}
-
-		.tribe-events-content p {
-			width: 100%;
-		}
-
-		.tribe-events-event-meta {
-			color: @body_background_color;
-
-			a {
-				color: @body_background_color;
-			}
-		}
-
-		.tribe-events-event-image img {
-			width: 100%;
-		}
-
-		.tribe-events-notices {
-			ul {
-				margin: 0;
-
-				color: @body_background_color;
-			}
-		}
-
-		.tribe-events-single-event-title {
-			color: #fff;
 		}
 	}
 }
