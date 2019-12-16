@@ -1,0 +1,23 @@
+{% extends "base.twig" %}
+
+{% block content %}
+	<div class="content-wrapper">
+		<article class="post-type-{{ post.post_type }}" id="post-{{ post.ID }}">
+			<section class="article-content">
+				<div class="post-header">
+					<h1 class="article-h1">{{ post.title }}</h1>
+
+					{% if post.thumbnail.src %}
+						<img src="{{post.thumbnail.src}}" role="presentation" />
+					{% endif %}
+				</div>
+				<p class="blog-author">
+					<span>By</span><a href="{{post.author.path}}"> {{ post.author.name }} </a><span>&bull;</span> {{ post.date }}
+				</p>
+				<div class="article-body">
+					{{ post.content }}
+				</div>
+			</section>
+		</article>
+	</div>
+{% endblock %}
